@@ -1,0 +1,47 @@
+.container {
+	margin: 50px auto;
+	padding: 20px;
+	width: 500px;
+	background-color: #f2f2f2;
+	border-radius: 10px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 36px;
+	margin-bottom: 30px;
+}
+
+label {
+	font-size: 24px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+select {
+	font-size: 18px;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+input[type="number"] {
+	font-size: 18px;
+	padding: 5px;
+	margin-bottom: 20px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	font-size: 24px;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #3e8e41;
+}

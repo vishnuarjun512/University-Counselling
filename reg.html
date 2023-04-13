@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seat Selection Process</title>
+	<link rel="stylesheet" type="text/css" href="reg.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Seat Selection Process</h1>
+		<form method="POST" action="reg.php">
+			<label for="rank">Enter your rank:</label>
+			<input type="number" id="rank" name="rank" required>
+			<br>
+			<label for="campus">Select your preferred campus:</label>
+			<select id="campus" name="campus" required>
+				<option value="RR">Ring Road Campus</option>
+				<option value="EC">Electronic City Campus</option>
+			</select>
+			<br>
+			<label for="branch">Select your preferred branch:</label>
+			<select id="branch" name="branch" required>
+				<option value="CS">Computer Science</option>
+				<option value="EC">Electronics and Communication</option>
+				<option value="EE">Electrical and Electronics</option>
+				<option value="BT">Biotechnology</option>
+			</select>
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</body>
+</html>
