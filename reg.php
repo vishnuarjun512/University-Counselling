@@ -124,17 +124,14 @@
 	);
 
 	// Get the form data
-	$slot = "";
-	$time = "";
+	$slot = $_POST["slot"];
 	$rank = $_POST["rank"];
+	$time = "";
 	if ($rank > 0 && $rank < 2000) {
-		$slot = 1;
 		$time = "8:30 - 11:30";
 	} else if ($rank > 2000 && $rank < 4000) {
-		$slot = 2;
 		$time = "11:30 - 2:30";
 	} else if ($rank > 4000 && $rank < 6000) {
-		$slot = 3;
 		$time = "2:30 - 5:30";
 	}
 
@@ -155,7 +152,6 @@
 			} else {
 				echo "EC Campus -> ";
 			}
-			echo $i;
 			echo "CS: " . $row["CS"] . " - EC: " . $row["EC"] . " - EE: " . $row["EE"] . " - BT: " . $row["BT"] . "<br>";
 			$i++;
 		}
@@ -170,6 +166,10 @@
 	$column_name = $_POST['branch'];
 	$idref = "";
 	$campus = $_POST["campus"];
+
+
+
+
 	if ($campus == "RR") {
 		$idref = 1;
 	} else {

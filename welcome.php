@@ -90,8 +90,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <div class="container">
         <h1>Seat Selection Process</h1>
         <form method="POST" action="reg.php">
-            <label for="rank">Enter your rank:</label>
-            <input type="number" id="rank" name="rank" style="text-align: center;" required>
+
+            <label for="rank">Rank:</label>
+            <input type="number" name="rank" id="rank" oninput="updateSlotOptions()" style="text-align: center;" required>
+            <br>
+
+            <label for="slot">Slot:</label>
+            <select name="slot" id="slot" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br>
+
+            <!-- <label for="rank">Enter your rank:</label> -->
+            <!-- <input type="number" id="rank" name="rank" style="text-align: center;" required> -->
             <br>
             <label for="campus">Select your preferred campus:</label>
             <select id="campus" name="campus" onchange="updateBranchOptions()" height="40" required>
@@ -146,6 +159,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     option.disabled = false;
                     option.title = "";
                 }
+            }
+        }
+
+        function updateSlotOptions() {
+            var rankInput = document.getElementById("rank");
+            var slotSelect = document.getElementById("slot");
+            var rank = parseInt(rankInput.value);
+
+            slotSelect.options.length = 0; // remove all options
+            if (rank < 2000) {
+                slotSelect.options[0] = new Option("1", "1");
+                slotSelect.options[1] = new Option("2", "2");
+                slotSelect.options[2] = new Option("3", "3");
+            } else if (rank > 2000 && rank < 4000) {
+                slotSelect.options[0] = new Option("2", "2");
+                slotSelect.options[1] = new Option("3", "3");
+            } else {
+                slotSelect.options[0] = new Option("3", "3");
             }
         }
     </script>
