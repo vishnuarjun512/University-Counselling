@@ -18,7 +18,6 @@
     define('DB_PASSWORD', '');
     define('DB_NAME', 'demo');
 
-
     // Connection 
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
     if ($link === false) {
@@ -26,12 +25,7 @@
     }
 
     $query = "CREATE DATABASE IF NOT EXISTS " . DB_NAME . ";";
-    if (mysqli_query($link, $query)) {
-        echo "<br>Database Operation Done Successfully";
-    } else {
-        echo "<br>Database Operation Failed";
-    }
-
+    mysqli_query($link, $query);
     mysqli_select_db($link, DB_NAME);
 
     $query = "CREATE TABLE IF NOT EXISTS `users` (
@@ -39,26 +33,19 @@
         `username` varchar(50) NOT NULL,
         `password` varchar(255) NOT NULL,
         `gmail` varchar(50) NOT NULL,
-        `rank` int,
-        `puc_marks` int,
+        `rank` int DEFAULT 0,
         `DD_number` int,
         `DD_amount` int,
         `Course` varchar(10),
         `Branch` varchar(4),
         `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-        `bookedSeat` int,
-        `confirmSeat` int,
+        `bookedSeat` int default 0,
+        `confirmSeat` int default 0,
         PRIMARY KEY (`id`),
         UNIQUE KEY `username` (`username`)
       ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
 
-    if (mysqli_query($link, $query)) {
-        echo "<br>Database Operation Done Successfully";
-    } else {
-        echo "<br>Database Operation Failed";
-    }
-
-
+    mysqli_query($link, $query);
     /* Attempt to connect to MySQL database */
     // Check connection
 
