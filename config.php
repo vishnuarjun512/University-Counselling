@@ -46,6 +46,8 @@
         `Course` varchar(10),
         `Branch` varchar(4),
         `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+        `bookedSeat` int,
+        `confirmSeat` int,
         PRIMARY KEY (`id`),
         UNIQUE KEY `username` (`username`)
       ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
@@ -58,8 +60,6 @@
 
 
     /* Attempt to connect to MySQL database */
-
-
     // Check connection
 
     ?>

@@ -24,53 +24,49 @@
     }
 
     // Two arrays to insert into database
-    $RR = array("AI" => 200, "CS" => 200, "ES" => 100, "EE" => 50, "BT" => 50);
-    $EC = array("AI" => 150, "CS" => 150, "ES" => 100);
+    $RR = array("CS" => 200, "EC" => 200, "EE" => 100, "BT" => 50);
+    $EC = array("CS" => 150, "EC" => 150, "EE" => 50);
 
 
     // SQL query to create table
-    $sql = "CREATE TABLE myTable (
+    $sql = "CREATE TABLE seats (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  AI INT(3) NOT NULL,
   CS INT(3) NOT NULL,
-  ES INT(3) NOT NULL,
-  EE INT(3),
+  EC INT(3) NOT NULL,
+  EE INT(3) NOT NULL,
   BT INT(3),
   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   )";
 
     // Execute query
     if ($conn->query($sql) === TRUE) {
-        echo "Table myTable created successfully";
+        echo "Table of Seat Matrix created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
-
     // SQL query to insert data into database
-    $sql1 = "INSERT INTO myTable (AI, CS, ES, EE, BT) VALUES ('" . $RR['AI'] . "', '" . $RR['CS'] . "', '" . $RR['ES'] . "', '" . $RR['EE'] . "', '" . $RR['BT'] . "')";
-    $sql2 = "INSERT INTO myTable (AI, CS, ES) VALUES ('" . $EC['AI'] . "', '" . $EC['CS'] . "', '" . $EC['ES'] . "')";
-
+    $sql1 = "INSERT INTO seats (CS, EC, EE, BT) VALUES ('" . $RR['CS'] . "', '" . $RR['EC'] . "', '" . $RR['EE'] . "', '" . $RR['BT'] . "')";
+    $sql2 = "INSERT INTO seats (CS, EC, EE) VALUES ('" . $EC['CS'] . "', '" . $EC['EC'] . "', '" . $EC['EE'] . "')";
     // Execute queries
     if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE) {
         echo "Data inserted successfully!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-
     // Display data from database
-    $sql = "SELECT * FROM myTable";
+    $sql = "SELECT * FROM seats";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         // Output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<br> AI: " . $row["AI"] . " - CS: " . $row["CS"] . " - ES: " . $row["ES"] . " - EE: " . $row["EE"] . " - BT: " . $row["BT"];
+            echo "<br> CS: " . $row["CS"] . " - EC: " . $row["EC"] . " - EE: " . $row["EE"] . " - BT: " . $row["BT"];
         }
     } else {
         echo "0 results";
     }
 
-    $sql = "UPDATE myTable ";
+    $sql = "UPDATE seats ";
     // Close connection
     $conn->close();
     ?>

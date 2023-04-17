@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="welcom.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <style>
+        h2{
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .container{
+            /* margin-bottom: 500px; */
+            position: relative;
+            bottom: 100px;
+            left: 40px;
+        }
+    </style>
 </head>
 <body>
     <!--nav bar -->
@@ -13,13 +28,14 @@
     <hr class="hr">
    
 
-    <h2>YOUR ADMISSION IS SUCCESFULLY</h2>
+    <h2>YOUR ADMISSION WAS SUCCESFULL</h2>
      <table class="container">
     
         <tr>
-        <td><p>SELECT YOUR WELCOME KIT</p>
-        </td>
+            <td><p style=" background-color: cornflowerblue; color: aliceblue;text-align: center; position: relative; left: 230px;padding-bottom: 5px;border-radius: 5px;">SELECT YOUR WELCOME KIT</p></td>
+            <td></td>
         </tr>
+        
 
         <tr>
         <td> <input type="checkbox">T-shirt</td>
@@ -30,7 +46,7 @@
         <br>
         
          <tr>
-        <td><input type="checkbox">BAG</td>
+        <td><input type="checkbox" style="position: relative;right: 7px;">BAG</td>
         <td><input type="text" placeholder="colour"></td>
         </tr>
         
@@ -39,11 +55,11 @@
 
         <tr>
         <td> <input type="checkbox">BOTTLE</td> 
+        
         <td> <input type="text" placeholder="colour"></td>
         </tr>
- 
+ <br>
 
-        <br>
         <br>
 
       
@@ -51,7 +67,7 @@
     
 </table>
 <form action="welcome.php" method="post">
-    <input type="submit" value="Submit">
+    <input type="submit" style="margin-left: 200px;" value="Submit">
 </form>
 </body>
 </html>
