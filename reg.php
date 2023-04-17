@@ -126,17 +126,18 @@
 	// Get the form data
 	$slot = $_POST["slot"];
 	$rank = $_POST["rank"];
+	$slotName = "";
 	$time = "";
 	if ($rank > 0 && $rank < 2000) {
 		$time = "8:30 - 11:30";
+		$slotName = "Slot1";
 	} else if ($rank > 2000 && $rank < 4000) {
 		$time = "11:30 - 2:30";
+		$slotName = "Slot2";
 	} else if ($rank > 4000 && $rank < 6000) {
 		$time = "2:30 - 5:30";
+		$slotName = "Slot3";
 	}
-
-
-
 
 	$link = new mysqli("localhost", "root", "", "demo");
 	// Display data from database
@@ -236,6 +237,17 @@
 	$user = $_SESSION['username'];
 	$sql = "UPDATE users SET rank=$rank, course='$branch', branch='$campus' WHERE username='$user' ;";
 	$conn->query($sql);
+
+	$sql = "INSERT INTO $slotName (studentName, rank, campus, branch)
+        VALUES ('$user', '$rank', '$campus', '$branch')";
+
+	if (mysqli_query($conn, $sql)) {
+		echo "Student Data inserted into $slotName successfully!";
+	} else {
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	}
+
+	$conn->close();
 	?>
 </body>
 
