@@ -101,7 +101,7 @@
     mysqli_query($conn, $sql);
     echo "<div class='details'>";
     echo "<br>";
-    echo "<h2>span>&nbsp; Token Generated for your upcoming process -> $token</h2>";
+    echo "<h3><span>&nbsp; Token Generated for your upcoming process -> </span> $token </h2>";
     echo "<p><span>&nbsp; First Name: </span>" . $fname . "</p>";
     echo "<p><span>&nbsp; Last Name: </span>" . $lname . "</p>";
     echo "<p><span>&nbsp; PESSAT Rank card </span>: " . $pcard . "</p>";
