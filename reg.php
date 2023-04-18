@@ -128,17 +128,16 @@
 	$rank = $_POST["rank"];
 	$slotName = "";
 	$time = "";
-	if ($rank > 0 && $rank < 2000) {
+	if ($slot == "1") {
 		$time = "8:30 - 11:30";
 		$slotName = "Slot1";
-	} else if ($rank > 2000 && $rank < 4000) {
+	} else if ($slot == "2") {
 		$time = "11:30 - 2:30";
 		$slotName = "Slot2";
-	} else if ($rank > 4000 && $rank < 6000) {
+	} else if ($slot == "3") {
 		$time = "2:30 - 5:30";
 		$slotName = "Slot3";
 	}
-
 	$_SESSION["slotName"] = $slotName;
 
 	$link = new mysqli("localhost", "root", "", "demo");

@@ -84,6 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    if ($username == "admin" && $password == "admin") {
+        header("location: admin.php");
+        exit;
+    }
+
     // Close connection
     mysqli_close($link);
 }

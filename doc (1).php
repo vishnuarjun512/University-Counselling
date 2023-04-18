@@ -63,7 +63,7 @@
 
     <?php
     session_start();
-    $fname = $_POST["fname"];
+    $fname = $_SESSION["username"];
     $lname = $_POST["lname"];
     $pcard = $_POST["pcard"];
     $sslcard = $_POST["sslcard"];
