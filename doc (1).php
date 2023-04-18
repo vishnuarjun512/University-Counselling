@@ -24,31 +24,32 @@
 
     }
 
-    .details{
+    .details {
         background-color: #f2f2f2;
-        
+
         color: black;
         font-family: sans-serif;
-   border-radius: 4px;
-   width: 400px;
-   margin-left: 550px;
-   
+        border-radius: 4px;
+        width: 400px;
+        margin-left: 550px;
+
     }
-span{
-    font-weight: bolder;
-}
 
-.goodies{
-    text-align: center;
-    margin-left: 550px;
-    /* color: #f2f2f2; */
+    span {
+        font-weight: bolder;
+    }
 
-}
+    .goodies {
+        text-align: center;
+        margin-left: 550px;
+        /* color: #f2f2f2; */
 
-.clickingGoodies{
-    text-align: center;
-    color: #f2f2f2;
-}
+    }
+
+    .clickingGoodies {
+        text-align: center;
+        color: #f2f2f2;
+    }
 </style>
 
 <body>
@@ -61,6 +62,7 @@ span{
 
 
     <?php
+    session_start();
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $pcard = $_POST["pcard"];
@@ -77,10 +79,29 @@ span{
     //     echo "Connection successfull!";
     // }
 
+    function getRandomStringRand($length = 16)
+    {
+        $stringSpace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $stringLength = strlen($stringSpace);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString = $randomString . $stringSpace[rand(0, $stringLength - 1)];
+        }
+        return $randomString;
+    }
+    $token = "";
+    $token = getRandomStringRand();
+
+
+    $slotName = $_SESSION["slotName"];
     $sql = "UPDATE users SET DD_number=$dNo, DD_amount=$damt WHERE username='$fname';";
     mysqli_query($conn, $sql);
-    echo"<div class='details'>";
-echo"<br>";
+
+    $sql = "UPDATE $slotName SET DD_number=$dNo, DD_amount=$damt , Token='$token' WHERE studentname='$fname';";
+    mysqli_query($conn, $sql);
+    echo "<div class='details'>";
+    echo "<br>";
+    echo "<h2>span>&nbsp; Token Generated for your upcoming process -> $token</h2>";
     echo "<p><span>&nbsp; First Name: </span>" . $fname . "</p>";
     echo "<p><span>&nbsp; Last Name: </span>" . $lname . "</p>";
     echo "<p><span>&nbsp; PESSAT Rank card </span>: " . $pcard . "</p>";
@@ -89,9 +110,9 @@ echo"<br>";
     echo "<p><span>&nbsp; Your Aadhar card Number:  </span>" . $adharno . "</p>";
     echo "<p><span>&nbsp; Your DD number : </span>" . $dNo . "</p>";
     echo "<p><span>&nbsp; Your DD Amount : </span>" . $damt . "</p>";
-    echo"<br>";
+    echo "<br>";
 
-    echo"</div>";
+    echo "</div>";
 
     echo "<button class='btn btn-dark goodies'>";
     echo " <a class='clickingGoodies' href='welcomkit.html'> Click for Goodies </a>";

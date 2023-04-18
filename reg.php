@@ -139,6 +139,8 @@
 		$slotName = "Slot3";
 	}
 
+	$_SESSION["slotName"] = $slotName;
+
 	$link = new mysqli("localhost", "root", "", "demo");
 	// Display data from database
 	$sql = "SELECT * FROM seats";
@@ -167,9 +169,6 @@
 	$column_name = $_POST['branch'];
 	$idref = "";
 	$campus = $_POST["campus"];
-
-
-
 
 	if ($campus == "RR") {
 		$idref = 1;
@@ -237,7 +236,6 @@
 	$user = $_SESSION['username'];
 	$sql = "UPDATE users SET rank=$rank, course='$branch', branch='$campus' WHERE username='$user' ;";
 	$conn->query($sql);
-
 	$sql = "INSERT INTO $slotName (studentName, rank, campus, branch)
         VALUES ('$user', '$rank', '$campus', '$branch')";
 

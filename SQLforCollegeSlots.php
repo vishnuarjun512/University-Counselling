@@ -23,7 +23,7 @@
     }
 
     // Create database
-    $sql = "CREATE DATABASE demo";
+    $sql = "CREATE DATABASE IF NOT EXISTS demo";
     if ($conn->query($sql) === TRUE) {
         echo "Database created successfully";
     } else {
@@ -47,7 +47,10 @@
             studentname VARCHAR(30) NOT NULL,
             rank INT(4) NOT NULL,
             campus VARCHAR(30) NOT NULL,
-            branch VARCHAR(30) NOT NULL
+            branch VARCHAR(30) NOT NULL,
+            `DD_number` int,
+            `DD_amount` int,
+            `Token` varchar(20)
         )";
 
     if ($conn->query($sql) === TRUE) {
@@ -62,7 +65,10 @@
             studentname VARCHAR(30) NOT NULL,
             rank INT(4) NOT NULL,
             campus VARCHAR(30) NOT NULL,
-            branch VARCHAR(30) NOT NULL
+            branch VARCHAR(30) NOT NULL,
+            `DD_number` int,
+            `DD_amount` int,
+            `Token` varchar(20)
         )";
 
     if ($conn->query($sql) === TRUE) {
@@ -77,7 +83,10 @@
             studentname VARCHAR(30) NOT NULL,
             rank INT(4) NOT NULL,
             campus VARCHAR(30) NOT NULL,
-            branch VARCHAR(30) NOT NULL
+            branch VARCHAR(30) NOT NULL,
+            `DD_number` int,
+            `DD_amount` int,
+            `Token` varchar(20)
         )";
 
     if ($conn->query($sql) === TRUE) {
